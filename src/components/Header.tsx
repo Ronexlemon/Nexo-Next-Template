@@ -11,7 +11,7 @@ export default function Header() {
   const { connect } = useConnect();
 
   useEffect(() => {
-    if (window.ethereum && window.ethereum.isMiniPay) {
+    if (window.ethereum && window.ethereum.isNexo) {
       setHideConnectBtn(true);
       connect({ connector: injected({ target: 'metaMask' }) });
     }
