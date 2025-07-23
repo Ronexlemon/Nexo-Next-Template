@@ -8,7 +8,7 @@ import {
   connectorsForWallets,
 } from '@rainbow-me/rainbowkit';
 import { WagmiProvider, createConfig, http } from 'wagmi';
-import { celo, celoAlfajores } from 'wagmi/chains';
+//import { celo, celoAlfajores } from 'wagmi/chains';
 import { crossfi } from '@/chains/crossfi';
 import Layout from '../components/Layout';
 import { injectedWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -30,7 +30,7 @@ const config = createConfig({
   connectors,
   chains: [crossfi],
   transports: {
-    [crossfi.id]: http()    
+    [crossfi.id]: http("https://rpc.testnet.ms")    
   },
 });
 
