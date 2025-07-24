@@ -18,6 +18,7 @@ const connectors = connectorsForWallets(
     {
       groupName: 'Recommended',
       wallets: [injectedWallet],
+      
     },
   ],
   {

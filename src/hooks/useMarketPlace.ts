@@ -73,7 +73,10 @@ export function useMarketplace() {
   }, [address]);
 
   const buy = async (index: number, amount: string) => {
-    if (!walletClient) throw new Error('Wallet not connected');
+    if (!walletClient) {
+      alert("Wallet not connected")
+      throw new Error('Wallet not connected');
+    } 
     return await walletClient.writeContract({
       address: contractAddress,
       abi: abi.abi,
