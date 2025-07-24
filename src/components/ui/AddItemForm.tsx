@@ -21,8 +21,10 @@ const AddForm = () => {
 
   const handleSubmit = async(e:any) => {
     e.preventDefault();
-      console.log("Submitted:", formData);
-      await addItem(formData.name,formData.amount)
+    console.log("Submitted:", formData);
+    alert(`The tx is data ${formData.name}`)
+    const tx = await addItem(formData.name, formData.amount)
+    alert(`The tx is ${tx}`)
     
   };
 
