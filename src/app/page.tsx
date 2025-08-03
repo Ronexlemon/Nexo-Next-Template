@@ -29,7 +29,7 @@ export default function Home() {
   return (
     <div className="flex flex-col justify-center items-center p-4 space-y-6">
       <h1 className="text-2xl font-bold text-center">
-        There you go... a canvas for your next Celo project!
+        There you go... a canvas for your next Crossfi project!
       </h1>
 
       {isConnected ? (

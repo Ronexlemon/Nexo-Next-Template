@@ -77,6 +77,7 @@ export function useMarketplace() {
       alert("Wallet not connected")
       throw new Error('Wallet not connected');
     } 
+    alert("Wallet  connected")
     return await walletClient.writeContract({
       address: contractAddress,
       abi: abi.abi,
@@ -88,8 +89,13 @@ export function useMarketplace() {
   };
 
   const addItem = async (name: string, amount: string) => {
-    if (!walletClient) throw new Error('Wallet not connected');
+    if (!walletClient) {
+      alert("No Wallet")
+      console.log("THE IS NO WALLET")
+      throw new Error('Wallet not connected');
 
+    }
+    alert("Wallet  connected")
     return await walletClient.writeContract({
       address: contractAddress,
       abi: abi.abi,
