@@ -1,18 +1,41 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useAccount } from 'wagmi';
+import { useAccount, useWalletClient } from 'wagmi';
 import { useRouter } from 'next/navigation';
 import AddForm from '@/components/ui/AddItemForm';
-import { useMarketplace } from '@/hooks/useMarketPlace';
+
 
 
 export default function Home() {
   const [userAddress, setUserAddress] = useState('');
   const [isMounted, setIsMounted] = useState(false);
   const { address, isConnected } = useAccount();
+  const { data: walletClient } = useWalletClient();
   const router = useRouter();
  
+
+   const SignMessage = async (message: string) => {
+   
+  
+    const signTx = await walletClient?.signMessage({ message })
+    
+  
+    return signTx 
+    
+  }
+
+  const handleSign = async () => {
+   
+
+    try {
+      const signature = await SignMessage("NEXO WALLET");
+      alert(`The signature ${signature}`)
+      console.log("Signature:", signature);
+    } catch (err) {
+      console.error("Signing failed:", err);
+    }
+  };
 
   useEffect(() => {
     setIsMounted(true);
@@ -45,6 +68,10 @@ export default function Home() {
         <AddForm />
       </div>
 
+      <button onClick={handleSign}  className="px-4 py-2 bg-black text-white rounded hover:bg-gray-800 transition">
+      Sign Message
+    </button>
+
       {/* 🔁 Navigate to /marketplace */}
       <button
         onClick={() => router.push('/marketplace')}
@@ -52,6 +79,8 @@ export default function Home() {
       >
         Go to Marketplace
       </button>
+
+
     </div>
   );
 }

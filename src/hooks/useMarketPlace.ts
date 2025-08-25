@@ -6,6 +6,7 @@ import abi from '@/abi/MarketPlace.json';
 import { CONTRACT_MARKET as contractAddress } from '@/constant';
 import { crossfi } from '@/chains/crossfi';
 
+
 export const publicClient = createPublicClient({
   chain: crossfi,
   transport: http()
@@ -16,6 +17,10 @@ type MarketItem = {
   amount: bigint;
   sold: boolean;
 };
+
+
+
+
 
 export function useMarketplace() {
    //const publicClient = usePublicClient();
