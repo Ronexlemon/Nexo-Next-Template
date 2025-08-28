@@ -10,6 +10,7 @@ import {
 import { WagmiProvider, createConfig, http } from 'wagmi';
 //import { celo, celoAlfajores } from 'wagmi/chains';
 import { crossfi } from '@/chains/crossfi';
+import { somniaTestnet } from 'viem/chains';
 import Layout from '../components/Layout';
 import { injectedWallet } from '@rainbow-me/rainbowkit/wallets';
 
@@ -29,9 +30,9 @@ const connectors = connectorsForWallets(
 
 const config = createConfig({
   connectors,
-  chains: [crossfi],
+  chains: [somniaTestnet],
   transports: {
-    [crossfi.id]: http("https://rpc.testnet.ms")    
+    [somniaTestnet.id]: http("https://dream-rpc.somnia.network")    
   },
 });
 
